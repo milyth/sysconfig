@@ -1,0 +1,38 @@
+# vi: ts=2 sw=2 expandtab
+
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = true
+  pager = true
+
+[commit]
+  gpgsign = true
+
+[init]
+  defaultBranch = dev
+
+[branch "autosetup"]
+  rebase = yes
+
+[core]
+  askpass =
+  editor = nvim
+
+[credential]
+  helper = store
+
+[push]
+  gpgSign = false
+  default = tracking
+  autoSetupRemote = true
+
+[pull]
+  ff = true
+
+[user]
+  signingKey = 3548AE0E53B1A595F19155361EEEB6F097BBCFA9
+  name = Moizes J. Sousa
+  email = milyth@proton.me

@@ -1,0 +1,93 @@
+#!/bin/bash
+set -e
+
+red="\e[0;31m"
+reset="\e[0m"
+green="\e[0;32m"
+
+declare -A config=(
+    ["User/Shell/Fish"]="${HOME}/.config/fish"
+    ["User/Tools/Git"]="${HOME}/.config/git"
+    ["User/Tools/Cargo"]="${HOME}/.cargo/config.toml"
+)
+
+fileExists() {
+    readlink "$1" >/dev/null || test -f "$1" || test -d "$2"
+}
+
+doApply() {
+    if [ -n "$1" ]; then
+        declare -A config=([$1]="${config[$1]}")
+        if [ -z "${config[$1]}" ]; then
+            echo "Error: Invalid config!"
+            exit 1
+        fi
+    fi
+
+    for key in "${!config[@]}"; do
+        local value="${config[$key]}"
+        printf "  [---]: %s => %s \r" "$key" "$value"
+
+        if fileExists "$value"; then
+            echo -en " [${red}fail${reset}]\r"
+        else
+            echo -en " [${green}succ${reset}]\r"
+            input=$(realpath "$key")
+            ln -s "$input" "$value"
+        fi
+        echo
+    done
+}
+
+doRemove() {
+    if [ -n "$1" ]; then
+        declare -A config=([$1]="${config[$1]}")
+        if [ -z "${config[$1]}" ]; then
+            echo "Error: Invalid config!"
+            exit 1
+        fi
+    fi
+
+    for key in "${!config[@]}"; do
+        local value="${config[$key]}"
+        printf "  [---]: Unlink %s \r" "$value"
+
+        if ! fileExists "$value"; then
+            echo -en " [${red}fail${reset}]\r"
+        else
+            echo -en " [${green}succ${reset}]\r"
+            input=$(realpath "$key")
+            unlink "$value"
+        fi
+        echo
+    done
+}
+
+doList() {
+    for key in "${!config[@]}"; do
+        local value="${config[$key]}"
+        echo "${key} --> ${value}"
+    done
+}
+
+case "$1" in
+apply | i | a)
+    shift
+    doApply "$@"
+    ;;
+remove | rm)
+    shift
+    doRemove "$@"
+    ;;
+list | ls)
+    doList "$@"
+    ;;
+*)
+    cat <<-EOF
+    Mily's configuration manager, finally! 
+    How to use?
+    you can use "./th apply" to install my config or use "./th remove" to uninstall :c
+    Or if you want to list my config "./th list"
+EOF
+    ;;
+esac
