@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+
+export wayland=0
+export wm_name="i3"
+#export gtk_theme="Qogir-Dark"
+export gtk_theme="Materia-dark"
+export gtk_icon="Papirus-Dark"
+export font="Fantasque Sans Mono"
+export cursor="macOS-Monterey"
+export cursor_size=24

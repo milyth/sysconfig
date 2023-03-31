@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+set +u
+
+function start-berry {
+    sxhkd -c ${HOME}/.config/berry/sxhkdrc &
+    exec berry
+}
+
+declare -a wm=(
+    ["berry"]=start-berry
+    ["i3"]=i3
+)

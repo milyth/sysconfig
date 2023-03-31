@@ -1,4 +1,4 @@
-if test -f ~/.asdf
+if test -d ~/.asdf
     source ~/.asdf/asdf.fish
 end
 

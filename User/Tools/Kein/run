@@ -1,0 +1,50 @@
+#!/usr/bin/bash
+
+set -eu
+
+export gnome_schema=org.gnome.desktop.interface
+
+cd "$(dirname $0)"
+
+source ./conf
+source ./wms
+
+start_wm_fn="${wm[${wm_name}]}"
+
+function start-wm {
+   if test -z "${internal_wm_started}"
+   then
+      echo "[*] starting window manager"
+      export internal_wm_started=1
+      export XCURSOR_PATH=${XCURSOR_PATH}:~/.local/share/icons
+      /usr/libexec/gsd-xsettings &
+      ~/.fehbg
+      cd ~
+      $start_wm_fn
+   fi
+}
+
+function apply-gtk {
+    echo "[*] applying gtk"
+    gsettings set $gnome_schema gtk-theme "$gtk_theme"
+    gsettings set $gnome_schema icon-theme "$gtk_icon"
+    gsettings set $gnome_schema cursor-theme "$cursor"
+    gsettings set $gnome_schema cursor-size "$cursor_size"
+    gsettings set $gnome_schema font-name "$font"
+}
+
+function apply-xresources {
+	echo "[*] applying xresources"
+	cat >/tmp/xresources <<-EOF
+		Xcursor.theme: ${cursor}
+		Xcursor.size:  ${cursor_size}
+	EOF
+
+	xrdb /tmp/xresources
+	xsetroot -cursor_name left_ptr
+}
+
+
+apply-gtk 
+apply-xresources
+start-wm 

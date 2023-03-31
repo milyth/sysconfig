@@ -8,7 +8,12 @@ green="\e[0;32m"
 declare -A config=(
     ["User/Shell/Fish"]="${HOME}/.config/fish"
     ["User/Tools/Git"]="${HOME}/.config/git"
+    ["User/Tools/Kein"]="${HOME}/.config/kein"
+    ["User/Terminal/kitty"]="${HOME}/.config/kitty"
+    ["User/Editor/doom"]="${HOME}/.config/doom"
     ["User/Tools/Cargo"]="${HOME}/.cargo/config.toml"
+    ["User/WM/i3"]="${HOME}/.config/i3"
+    ["User/Bar/i3status"]="${HOME}/.config/i3status"
 )
 
 fileExists() {
