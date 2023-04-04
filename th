@@ -11,8 +11,10 @@ declare -A config=(
     ["User/Tools/Kein"]="${HOME}/.config/kein"
     ["User/Terminal/kitty"]="${HOME}/.config/kitty"
     ["User/Editor/doom"]="${HOME}/.config/doom"
-    ["User/Tools/Cargo"]="${HOME}/.cargo/config.toml"
+    ["User/Tools/Cargo/config.toml"]="${HOME}/.cargo/config.toml"
     ["User/WM/i3"]="${HOME}/.config/i3"
+    ["User/WM/picom"]="${HOME}/.config/picom"
+    ["User/Misc/user-dirs.dirs"]="${HOME}/.config/user-dirs.dirs"
     ["User/Bar/i3status"]="${HOME}/.config/i3status"
 )
 

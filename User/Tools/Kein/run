@@ -12,16 +12,24 @@ source ./wms
 start_wm_fn="${wm[${wm_name}]}"
 
 function start-wm {
-   if test -z "${internal_wm_started}"
-   then
-      echo "[*] starting window manager"
-      export internal_wm_started=1
-      export XCURSOR_PATH=${XCURSOR_PATH}:~/.local/share/icons
-      /usr/libexec/gsd-xsettings &
-      ~/.fehbg
-      cd ~
-      $start_wm_fn
-   fi
+if test -z "${internal_wm_started}"
+then
+  echo "[*] starting window manager"
+  export internal_wm_started=1
+  export XCURSOR_PATH=${XCURSOR_PATH}:~/.local/share/icons
+  /usr/libexec/gsd-xsettings &
+  dunst & 
+  unclutter -idle 5 &
+  export GTK_IM_MODULE=ibus
+  export XMODIFIES=@im-ibus
+  export QT_IM_MODULE=ibus
+  systemctl --user import-environment XCURSOR_PATH
+  ibus-daemon -drx    
+  ~/.fehbg || echo "[!] no wallpaper configured" 
+  xset r rate 300 40
+  cd ~
+  $start_wm_fn
+fi
 }
 
 function apply-gtk {
