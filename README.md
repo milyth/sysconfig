@@ -1,5 +1,11 @@
-# Personal System Configuration
-I'm actually using OpenSUSE Tumbleweed with KDE.
+# Personal `sysconfig` 
+Welcome to the void.
+
+## What i'm using?
+    - Void Linux
+    - KDE
+    - Flatpak
+    - Ungoogled Chromium
 
 ## FAQ
 
@@ -9,7 +15,7 @@ I'm actually using OpenSUSE Tumbleweed with KDE.
 ### How do I uninstall your dotfiles?
 `./th remove`
 
-### Why you are using OpenSUSE?
+### Why you are using Void?
 I like it. ~~it's better than arch btw~~
 
 
