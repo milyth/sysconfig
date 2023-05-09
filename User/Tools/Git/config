@@ -19,7 +19,7 @@
 
 [core]
   askpass =
-  editor = nvim
+  editor = nvim 
 
 [credential]
   helper = store

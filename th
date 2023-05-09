@@ -6,10 +6,13 @@ reset="\e[0m"
 green="\e[0;32m"
 
 declare -A config=(
-    ["User/Shell/Fish"]="${HOME}/.config/fish"
+    ["User/Shell/zshrc"]="${HOME}/.zshrc"
     ["User/Tools/Git"]="${HOME}/.config/git"
+    ["User/Tools/Tmux/tmux.conf"]="${HOME}/.tmux.conf"
     ["User/Terminal/kitty"]="${HOME}/.config/kitty"
     ["User/Editor/doom"]="${HOME}/.config/doom"
+    ["User/Editor/astronvim"]="${HOME}/.config/astronvim"
+    ["${HOME}/.config/astronvim"]="${HOME}/.config/nvim/lua/user"
     ["User/Tools/Cargo/config.toml"]="${HOME}/.cargo/config.toml"
 )
 
