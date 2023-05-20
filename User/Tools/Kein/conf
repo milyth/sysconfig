@@ -1,10 +1,9 @@
 #!/usr/bin/bash
 
-export wayland=0
 export wm_name="i3"
-#export gtk_theme="Qogir-Dark"
-export gtk_theme="Orchis-Dark-Compact"
+export gtk_theme="rose-pine-gtk"
+#export gtk_theme="Orchis-Dark-Compact"
 export gtk_icon="Papirus-Dark"
-export font="Inter"
-export cursor="macOS-Monterey"
+export font="Cantarell"
+export cursor="macOS-BigSur"
 export cursor_size=24

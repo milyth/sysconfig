@@ -11,8 +11,13 @@ declare -A config=(
     ["User/Tools/Tmux/tmux.conf"]="${HOME}/.tmux.conf"
     ["User/Terminal/kitty"]="${HOME}/.config/kitty"
     ["User/Editor/doom"]="${HOME}/.config/doom"
+    ["User/WM/picom"]="${HOME}/.config/picom" 
+    ["User/WM/i3"]="${HOME}/.config/i3"
+    ["User/Bar/i3status"]="${HOME}/.config/i3status" 
+    ["User/Tools/Kein"]="${HOME}/.config/kein"  
+    ["User/Tools/Rofi"]="${HOME}/.config/rofi" 
     ["User/Editor/astronvim"]="${HOME}/.config/astronvim"
-    ["${HOME}/.config/astronvim"]="${HOME}/.config/nvim/lua/user"
+#    ["${HOME}/.config/astronvim"]="${HOME}/.config/nvim/lua/user"
     ["User/Tools/Cargo/config.toml"]="${HOME}/.cargo/config.toml"
 )
 

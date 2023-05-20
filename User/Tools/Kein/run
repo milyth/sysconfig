@@ -19,12 +19,15 @@ then
   export XCURSOR_PATH=${XCURSOR_PATH}:~/.local/share/icons
   /usr/libexec/gsd-xsettings &
   dunst & 
-  unclutter -idle 5 &
-  export GTK_IM_MODULE=ibus
-  export XMODIFIES=@im-ibus
-  export QT_IM_MODULE=ibus
+
+  GTK_IM_MODULE=fcitx
+	QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
+SDL_IM_MODULE=fcitx
+GLFW_IM_MODULE=ibus
   systemctl --user import-environment XCURSOR_PATH
-  ibus-daemon -drx    
+  #ibus-daemon -drx    
+  fcitx5 -d
   ~/.fehbg || echo "[!] no wallpaper configured" 
   xset r rate 300 40
   cd ~

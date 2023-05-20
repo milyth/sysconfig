@@ -22,7 +22,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec kitty -1
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -87,16 +87,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1: term"
-set $ws2 "2: www"
-set $ws3 "3: editor"
-set $ws4 "4: chat"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10: music"
+set $ws10 "0"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -164,10 +164,10 @@ set $focdbg #2d2d2d
 set $unfocd #202020
 set $text   #e0def4
 
-gaps inner 2
-gaps outer 2
-set $bg        #161616
-set $text      #f2f4f8
+gaps inner 0
+gaps outer 0
+set $bg        #191724
+set $text      #e0def4
 set $accent    #ebbcba
 set $accentalt #2a2a2a
 
@@ -182,8 +182,8 @@ client.urgent           $urgent $urgent $text   $urgent   $urgent
 client.placeholder      $unfocd $unfocd $text   $unfocd   $unfocd
 
 bar {
-    font pango:FiraCode Nerd Font 10
-    position bottom
+    font pango:CaskaydiaCove Nerd Font 10
+    position top
     status_command i3status
     colors {
         separator  $accentalt
@@ -203,10 +203,9 @@ bindsym Shift+Print exec --no-startup-id flameshot gui
 
 # rc
 exec_always setxkbmap -variant intl
-exec_always xset led 3
 exec --no-startup-id flameshot
-exec --no-startup-id google-chrome
-exec --no-startup-id kitty
+exec --no-startup-id brave
+exec --no-startup-id alacritty 
 exec --no-startup-id picom
 exec --no-startup-id playerctld daemon
 
@@ -221,11 +220,11 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [class="File Operation Progress"] floating enable
 
-assign [class="kitty"] workspace number $ws1
-assign [class="Google-chrome"] workspace number $ws2
+assign [class="Alacritty"] workspace number $ws1
+assign [class="Brave-browser"] workspace number $ws2
 
 assign [class="Emacs"] workspace number $ws3
-assign [class="Code"] workspace number $ws3
+assign [class="VSCodium"] workspace number $ws3
 assign [class="lutris"] workspace number $ws4
 assign [class="ru-turikhay-tlauncher-bootstrap-Bootstrap"] workspace number $ws5
 assign [class="prismlauncher"] workspace number $ws5
