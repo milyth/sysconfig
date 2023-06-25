@@ -1,0 +1,11 @@
+#!/bin/bash
+set -eu
+
+test -d ~/Pictures/Screenshots || mkdir -p ~/Pictures/Screenshots
+fileName=$(date "+Screenshot %m-%d-%Y %I:%M:%S %h.png")
+out="$HOME/Pictures/Screenshots/${fileName}"
+
+maim -s | tee "$out" | xclip -selection clipboard -t image/png -i 
+
+notify-send -i "${out}" "Operating System" "Took screenshot into ${out/${HOME}/\~}"  
+

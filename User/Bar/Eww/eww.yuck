@@ -1,0 +1,68 @@
+(deflisten ws :initial "1"
+  `scripts/wwatch.sh`)
+
+(defwidget workspace [name number]
+  (box :class "workspace ${ws == number ? name : "" }"
+       :valign "start"
+       (button :onclick "wmctrl -s ${number}" "${ws == number ? "󱓻" : "󱓼"}")))
+
+(defwidget bar []
+   (centerbox :orientation "v" :space-evenly true
+    (box :valign "start" (workspaces))
+    (box :valign "middle" (music))
+    (box :valign "end" (status))))
+
+
+(defwidget workspaces []
+  (box :class "workspaces"
+       :orientation "v"
+       :space-evenly false 
+       :halign "center"
+       :spacing 10
+    (workspace :name "term" :number 1)
+    (workspace :name "web" :number 2)
+    (workspace :name "editor" :number 3)
+    (workspace :name "test" :number 4)
+    (workspace :name "game" :number 5)
+  ))
+
+(defwidget status []
+  (box :class "status" :orientation "v" :space-evenly false :halign "middle"
+    (label :class "sound" :text "${volume}%")
+    (label :class "memory" :text "${round(EWW_RAM.used_mem_perc, 0)}%")
+    (label :text "──────")
+    (label :text "${hour}")
+    (label :text "${minute}")
+  ))
+
+(defwidget music []
+  (box :class "music"
+       :orientation "v"
+       :space-evenly false
+       :halign "center"
+    {music != "" ? "" : ""}))
+
+
+
+(deflisten music :initial ""
+  "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
+
+(defpoll volume :interval "1s"
+  "pamixer --get-volume")
+
+(defpoll hour :interval "1h"
+  "date '+%H'")
+
+(defpoll minute :interval "60s"
+  "date '+%M'")
+
+  (defwindow bar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "8"
+                      :y "0%"
+                      :width "2%"
+                      :height "97%"
+                      :anchor "left center")
+  :reserve (struts :side "left" :distance "4%")
+  (bar))

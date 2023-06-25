@@ -1,0 +1,20 @@
+#!/bin/bash
+
+pgrep -x gsd-xsettings || /usr/libexec/gsd-xsettings &
+pgrep -x dunst || /usr/bin/dunst &
+pgrep -x picom || /usr/bin/picom &
+pgrep -x eww || eww open bar &
+
+source ~/.config/herbstluftwm/conf
+gnome_schema="org.gnome.desktop.interface"
+gsettings set "$gnome_schema" gtk-theme "$gtk_theme"
+gsettings set "$gnome_schema" icon-theme "$icon_theme"
+gsettings set "$gnome_schema" cursor-theme "$cursor_theme"
+gsettings set "$gnome_schema" font-name "$font_name"
+
+echo "Xcursor.size: 16
+Xcursor.theme: ${cursor_theme}" > /tmp/xrdb
+xrdb -merge /tmp/xrdb
+xsetroot -cursor_name left_ptr
+rm /tmp/xrdb
+

@@ -1,0 +1,29 @@
+[global]
+    frame_width = 1
+    offset = 18x38
+    icon_theme = Papirus-Dark
+    icon_path = /usr/share/icons/Papirus-Dark/16x16/actions/:/usr/share/icons/Papirus-Dark/16x16/devices/
+    font = IBM Plex Sans 10
+
+[urgency_low]
+    # IMPORTANT: colors have to be defined in quotation marks.
+    # Otherwise the "#" and following would be interpreted as a comment.
+    background = "#222222"
+    foreground = "#888888"
+    timeout = 10
+    # Icon for notifications with low urgency, uncomment to enable
+    #default_icon = /path/to/icon
+
+[urgency_normal]
+    background = "#161616"
+    frame_color = "#282828"
+    timeout = 10
+    # Icon for notifications with normal urgency, uncomment to enable
+    #default_icon = /path/to/icon
+
+[urgency_critical]
+    background = "#161616"
+    frame_color = "#ee5396"
+    timeout = 0
+
+# vim: ft=cfg

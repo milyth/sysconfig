@@ -1,6 +1,7 @@
-set -gx PATH $PATH $HOME/.cargo/bin
-set -gx PATH $PATH $HOME/.local/bin
+set -gx GTK_USE_PORTAL 1
+set -gx CC clang
+set -gx CXX clang++
+set -gx GPG_TTY (tty)
 
-function kein 
-	~/.config/kein/run
-end
+set -gx PATH $PATH $HOME/.local/bin
+set -gx PATH $PATH $HOME/.cargo/bin
