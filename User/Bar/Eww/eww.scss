@@ -1,6 +1,6 @@
 * {
   all: unset; //Unsets everything so you can style everything from scratch
-  font-family: Iosevka;
+  font-family: Iosevka, Symbols Nerd Font;
 }
 
 //Global Styles
@@ -22,7 +22,7 @@
 
 .workspace {
   margin-left: 7px;
-  margin-right: 9px;
+  margin-right: 7px;
   margin-bottom: 2px;
 
   &.term {

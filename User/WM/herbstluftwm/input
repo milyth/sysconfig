@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# HACK: Set all input devices to flat profile
+
+export LC_ALL=en_US.UTF-8
+
+for device in $(xinput list | grep "slave  pointer")
+do
+  if grep id <<<$device >/dev/null
+  then
+    IFS='=' read -a prse <<<$device
+    id=${prse[1]} 
+    xinput --set-prop $id 'libinput Accel Profile Enabled' 0, 1 2>/dev/null
+  fi
+done
+
