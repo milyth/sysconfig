@@ -1,4 +1,4 @@
-<img align="left" style="vertical-align: middle" height="120" src="https://github.com/milyth.png" >
+<img align="left" style="vertical-align: middle" height="120" src="https://github.com/milyth.png">
 
 # My OwO Dotfiles
 
@@ -7,6 +7,8 @@ Just my fluffy Void Linux configuration!
 
 
 ## What is in it?
+<img align="right" style="vertical-align: middle" height="235" src="/.github/scrsht.png">
+
 - Fish
 - HerbstluftWM
 - Dunst
