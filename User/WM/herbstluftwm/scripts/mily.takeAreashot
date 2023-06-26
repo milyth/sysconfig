@@ -6,6 +6,6 @@ fileName=$(date "+Screenshot %m-%d-%Y %I:%M:%S %h.png")
 out="$HOME/Pictures/Screenshots/${fileName}"
 
 maim -s | tee "$out" | xclip -selection clipboard -t image/png -i 
-
+test -f $out
 notify-send -i "${out}" "Operating System" "Took screenshot into ${out/${HOME}/\~}"  
 
