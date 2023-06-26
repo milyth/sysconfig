@@ -1,0 +1,4 @@
+#!/bin/bash
+
+pgrep -l brave || flatpak run com.brave.Browser &
+pgrep -l alacritty || alacritty &

@@ -5,8 +5,9 @@ border_Active=#282828
 border_Bg=#161616
 border_Outer=#282828
 
-gtk_theme=Adwaita
+gtk_theme=Materia-dark-compact
 icon_theme=Papirus-Dark
-cursor_theme=Breeze_Snow
+cursor_size=16
+cursor_theme=Plasma-Overdose
 font_name="IBM Plex Sans"
 

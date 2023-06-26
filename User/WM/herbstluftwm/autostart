@@ -132,7 +132,7 @@ hc set frame_gap 0
 
 hc attr theme.title_height 15
 hc attr theme.title_when multiple_tabs
-hc attr theme.title_font 'IBM Plex Sans:pixelsize=13'  # example using Xft
+hc attr theme.title_font "${font_name}:pixelsize=13"  # example using Xft
 # hc attr theme.title_font '-*-fixed-medium-r-*-*-13-*-*-*-*-*-*-*'
 hc attr theme.title_depth 2 # space below the title's baseline
 hc attr theme.active.color "${border_Active}"
@@ -180,15 +180,22 @@ hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 hc rule fixedsize floating=on
 
+
+# Custom rules, yay
+hc rule class="Alacritty" tag=1 focus=on
+hc rule class="Brave-browser" tag=2 focus=on
+hc rule class="Emacs" tag=3 focus=on
+
 hc set tree_style '╾│ ├└╼─┐'
 
 # unlock, just to be sure
-hc unlock
-
 $BG_CMD
 
 ~/.config/herbstluftwm/theming
 ~/.config/herbstluftwm/input
+~/.config/herbstluftwm/apps
 
 setxkbmap -variant intl
+
+hc unlock
 
